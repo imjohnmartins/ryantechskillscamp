@@ -1,0 +1,621 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ryan Tech Skills Camp 2026 — JSS3 Holiday Training</title>
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --navy:    #090D24;
+  --navy2:   #0D1530;
+  --cyan:    #00CFFF;
+  --purple:  #9B4FE8;
+  --white:   #FFFFFF;
+  --body:    rgba(255,255,255,0.65);
+  --dim:     rgba(255,255,255,0.38);
+  --cborder: rgba(0,207,255,0.18);
+  --pborder: rgba(155,79,232,0.25);
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{
+  background:var(--navy);
+  color:var(--white);
+  font-family:'Poppins',sans-serif;
+  overflow-x:hidden;
+  line-height:1.6;
+}
+
+/* ── NAV ── */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:200;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:16px 6%;
+  background:rgba(9,13,36,0.88);
+  backdrop-filter:blur(14px);
+  border-bottom:1px solid var(--cborder);
+  transition:padding .3s;
+}
+.nav-logo{
+  font-family:'Orbitron',sans-serif;font-size:15px;
+  font-weight:700;color:var(--cyan);text-decoration:none;
+  letter-spacing:0.05em;
+}
+.nav-cta{
+  background:var(--purple);color:#fff;
+  font-family:'Poppins',sans-serif;font-size:13px;font-weight:600;
+  padding:9px 20px;border-radius:7px;text-decoration:none;
+  transition:opacity .2s,transform .2s;
+}
+.nav-cta:hover{opacity:.88;transform:translateY(-1px);}
+
+/* ── HERO ── */
+.hero{
+  min-height:100vh;
+  display:flex;align-items:center;
+  padding:130px 6% 90px;
+  position:relative;overflow:hidden;
+}
+/* Hex grid background */
+.hero-bg{
+  position:absolute;inset:0;
+  background-image:
+    linear-gradient(rgba(0,207,255,0.035) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(0,207,255,0.035) 1px,transparent 1px);
+  background-size:48px 48px;
+  pointer-events:none;
+}
+/* Glowing orbs */
+.hero-orb{
+  position:absolute;border-radius:50%;pointer-events:none;
+  filter:blur(80px);
+}
+.hero-orb-1{
+  width:500px;height:500px;
+  background:rgba(155,79,232,0.12);
+  top:-100px;right:-100px;
+}
+.hero-orb-2{
+  width:400px;height:400px;
+  background:rgba(0,207,255,0.08);
+  bottom:-80px;left:-80px;
+}
+/* Hexagonal decoration mirroring the logo */
+.hero-hex{
+  position:absolute;
+  right:5%;top:50%;transform:translateY(-50%);
+  width:min(440px,42vw);opacity:0.07;
+  pointer-events:none;
+}
+.hero-content{position:relative;z-index:1;max-width:660px;}
+
+.eyebrow{
+  font-size:11px;font-weight:500;
+  text-transform:uppercase;letter-spacing:.16em;
+  color:var(--purple);
+  display:flex;align-items:center;gap:10px;
+  margin-bottom:18px;
+}
+.eyebrow::before{content:'';width:28px;height:1px;background:var(--purple);}
+
+h1.hero-title{
+  font-family:'Orbitron',sans-serif;
+  font-size:clamp(30px,4.5vw,56px);
+  font-weight:700;line-height:1.15;
+  color:var(--white);
+  margin-bottom:22px;
+}
+h1.hero-title .accent{color:var(--cyan);}
+
+.hero-sub{
+  font-size:clamp(15px,1.8vw,18px);font-weight:400;
+  color:var(--body);line-height:1.8;
+  max-width:520px;margin-bottom:30px;
+}
+.tag-row{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:36px;}
+.tag{
+  font-size:11px;font-weight:500;
+  text-transform:uppercase;letter-spacing:.06em;
+  color:var(--cyan);
+  border:1px solid rgba(0,207,255,0.3);
+  background:rgba(0,207,255,0.06);
+  padding:6px 16px;border-radius:20px;
+}
+.btn-primary{
+  display:inline-block;
+  background:var(--purple);color:#fff;
+  font-family:'Poppins',sans-serif;font-size:15px;font-weight:600;
+  padding:14px 32px;border-radius:8px;text-decoration:none;
+  transition:transform .25s,box-shadow .25s;
+  box-shadow:0 0 0 0 rgba(155,79,232,0);
+}
+.btn-primary:hover{
+  transform:translateY(-3px);
+  box-shadow:0 8px 28px rgba(155,79,232,0.35);
+}
+.hero-meta{
+  display:flex;flex-wrap:wrap;gap:28px;
+  margin-top:34px;
+  padding-top:30px;
+  border-top:1px solid rgba(255,255,255,0.08);
+}
+.meta-item{display:flex;flex-direction:column;gap:4px;}
+.meta-label{font-size:10px;font-weight:500;text-transform:uppercase;letter-spacing:.1em;color:var(--dim);}
+.meta-value{font-size:14px;font-weight:600;color:var(--cyan);}
+
+/* ── DIVIDER ── */
+.divider{
+  height:1px;
+  background:linear-gradient(90deg,transparent,rgba(0,207,255,0.22),transparent);
+}
+
+/* ── COMMON SECTION ── */
+section.block{padding:88px 6%;}
+section.block-alt{padding:88px 6%;background:var(--navy2);}
+
+.s-eyebrow{
+  font-size:11px;font-weight:500;
+  text-transform:uppercase;letter-spacing:.16em;color:var(--purple);
+  display:flex;align-items:center;gap:10px;margin-bottom:14px;
+}
+.s-eyebrow::before{content:'';width:28px;height:1px;background:var(--purple);}
+.s-eyebrow.center{justify-content:center;}
+.s-eyebrow.center::before{display:none;}
+
+h2.s-title{
+  font-family:'Poppins',sans-serif;
+  font-size:clamp(22px,3vw,36px);font-weight:600;
+  color:var(--cyan);line-height:1.3;margin-bottom:14px;
+}
+h2.s-title.center{text-align:center;}
+.s-body{
+  font-size:16px;font-weight:400;
+  color:var(--body);line-height:1.82;max-width:600px;
+}
+.s-body.center{text-align:center;margin:0 auto;}
+
+/* ── ABOUT ── */
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:72px;align-items:center;margin-top:8px;}
+.stat-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+.stat-card{
+  background:rgba(255,255,255,0.03);
+  border:1px solid var(--cborder);border-radius:14px;
+  padding:24px 20px;
+}
+.stat-num{
+  font-family:'Orbitron',sans-serif;font-size:30px;font-weight:700;
+  color:var(--cyan);margin-bottom:6px;
+}
+.stat-lbl{font-size:13px;font-weight:400;color:var(--body);}
+
+/* ── SKILLS ── */
+.skills-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:44px;}
+.skill-card{
+  background:rgba(255,255,255,0.03);
+  border:1px solid var(--cborder);border-radius:14px;
+  padding:30px 26px;
+  transition:border-color .3s,transform .3s,box-shadow .3s;
+}
+.skill-card:hover{
+  border-color:rgba(0,207,255,0.5);
+  transform:translateY(-5px);
+  box-shadow:0 12px 32px rgba(0,207,255,0.08);
+}
+.sk-icon{font-size:30px;margin-bottom:16px;}
+.sk-title{font-size:18px;font-weight:600;color:var(--white);margin-bottom:8px;}
+.sk-desc{font-size:14px;font-weight:400;color:var(--body);line-height:1.72;}
+
+/* ── DETAILS ── */
+.details-grid{display:grid;grid-template-columns:1.1fr 0.9fr;gap:56px;align-items:start;margin-top:48px;}
+.detail-list{display:flex;flex-direction:column;gap:24px;}
+.detail-item{display:flex;gap:18px;align-items:flex-start;}
+.d-icon{
+  width:44px;height:44px;border-radius:10px;flex-shrink:0;
+  background:rgba(0,207,255,0.07);border:1px solid rgba(0,207,255,0.2);
+  display:flex;align-items:center;justify-content:center;font-size:20px;
+}
+.d-label{font-size:11px;font-weight:500;text-transform:uppercase;letter-spacing:.08em;color:var(--cyan);margin-bottom:4px;}
+.d-value{font-size:15px;font-weight:400;color:var(--white);line-height:1.55;}
+.d-note{font-size:12px;color:var(--dim);margin-top:3px;}
+
+.fee-card{
+  background:rgba(155,79,232,0.07);
+  border:1px solid var(--pborder);border-radius:18px;
+  padding:40px 32px;text-align:center;
+  position:relative;overflow:hidden;
+}
+.fee-card::before{
+  content:'';position:absolute;
+  top:-60px;right:-60px;width:180px;height:180px;border-radius:50%;
+  background:rgba(155,79,232,0.12);filter:blur(40px);pointer-events:none;
+}
+.fee-chip{
+  display:inline-block;
+  font-size:10px;font-weight:600;
+  text-transform:uppercase;letter-spacing:.1em;color:var(--purple);
+  background:rgba(155,79,232,0.12);border:1px solid var(--pborder);
+  padding:4px 14px;border-radius:20px;margin-bottom:18px;
+}
+.fee-amount{
+  font-family:'Poppins',sans-serif;font-size:clamp(36px,5vw,52px);
+  font-weight:700;color:var(--cyan);margin-bottom:8px;
+}
+.fee-sub{font-size:13px;color:var(--body);margin-bottom:28px;}
+.fee-card .btn-primary{display:block;width:100%;text-align:center;}
+
+/* ── WHO ── */
+.who-grid{display:grid;grid-template-columns:1fr 1fr;gap:72px;align-items:center;margin-top:44px;}
+.check-list{display:flex;flex-direction:column;gap:16px;}
+.check-item{display:flex;gap:14px;align-items:flex-start;}
+.chk{
+  width:24px;height:24px;border-radius:50%;flex-shrink:0;
+  background:rgba(0,207,255,0.08);border:1px solid var(--cyan);
+  display:flex;align-items:center;justify-content:center;
+  font-size:11px;color:var(--cyan);margin-top:1px;font-weight:700;
+}
+.chk-text{font-size:15px;color:var(--body);line-height:1.6;}
+
+/* ── REGISTRATION ── */
+.reg-inner{max-width:600px;margin:0 auto;text-align:center;}
+.form-box{
+  background:rgba(255,255,255,0.03);
+  border:1px solid var(--cborder);border-radius:16px;
+  padding:48px 36px;margin-top:40px;
+}
+.form-note{font-size:13px;color:var(--dim);margin-bottom:22px;}
+.form-box .btn-primary{display:inline-block;}
+.form-divider{
+  margin:20px 0;font-size:12px;color:var(--dim);
+  display:flex;align-items:center;gap:12px;
+}
+.form-divider::before,.form-divider::after{
+  content:'';flex:1;height:1px;background:rgba(255,255,255,0.08);
+}
+.wa-btn{
+  display:inline-flex;align-items:center;gap:8px;
+  border:1px solid rgba(255,255,255,0.12);color:var(--body);
+  font-family:'Poppins',sans-serif;font-size:13px;font-weight:500;
+  padding:12px 24px;border-radius:8px;text-decoration:none;
+  background:rgba(255,255,255,0.04);
+  transition:border-color .2s,color .2s;
+}
+.wa-btn:hover{border-color:var(--cyan);color:var(--white);}
+
+/* ── FOOTER ── */
+footer{
+  background:#050811;
+  border-top:1px solid rgba(0,207,255,0.1);
+  padding:48px 6%;
+  display:flex;align-items:flex-start;justify-content:space-between;
+  flex-wrap:wrap;gap:32px;
+}
+.footer-brand{
+  font-family:'Orbitron',sans-serif;font-size:14px;
+  font-weight:700;color:var(--cyan);margin-bottom:6px;
+}
+.footer-sub{font-size:12px;color:var(--dim);margin-bottom:14px;}
+.footer-contact{font-size:12px;color:var(--dim);line-height:1.9;}
+.footer-contact a{color:var(--cyan);text-decoration:none;}
+.footer-contact a:hover{text-decoration:underline;}
+.footer-right{text-align:right;align-self:flex-end;}
+.footer-copy{font-size:11px;color:rgba(255,255,255,0.25);line-height:1.7;}
+
+/* ── SCROLL REVEAL ── */
+.reveal{opacity:0;transform:translateY(28px);transition:opacity .65s ease,transform .65s ease;}
+.reveal.visible{opacity:1;transform:none;}
+
+/* ── RESPONSIVE ── */
+@media(max-width:768px){
+  nav{padding:14px 4%;}
+  .about-grid,.details-grid,.who-grid{grid-template-columns:1fr;gap:40px;}
+  .skills-grid{grid-template-columns:1fr;}
+  .stat-grid{grid-template-columns:1fr 1fr;}
+  .hero-meta{gap:18px;}
+  .hero-hex{display:none;}
+  section.block,section.block-alt{padding:64px 5%;}
+  .form-box{padding:32px 20px;}
+  footer{flex-direction:column;}
+  .footer-right{text-align:left;align-self:auto;}
+}
+@media(prefers-reduced-motion:reduce){
+  .reveal{opacity:1;transform:none;}
+  .btn-primary,.skill-card{transition:none;}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#top" class="nav-logo">Ryan Tech Hub</a>
+  <a href="#register" class="nav-cta">Register Now</a>
+</nav>
+
+<!-- HERO -->
+<div id="top"></div>
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-orb hero-orb-1"></div>
+  <div class="hero-orb hero-orb-2"></div>
+  <!-- Hexagonal SVG echoing the logo -->
+  <svg class="hero-hex" viewBox="0 0 440 440" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <polygon points="220,20 400,115 400,325 220,420 40,325 40,115" fill="none" stroke="#00CFFF" stroke-width="2.5"/>
+    <polygon points="220,60 370,143 370,297 220,380 70,297 70,143" fill="none" stroke="#9B4FE8" stroke-width="1.5"/>
+    <polygon points="220,100 340,170 340,270 220,340 100,270 100,170" fill="none" stroke="#00CFFF" stroke-width="1"/>
+    <line x1="220" y1="20" x2="220" y2="0" stroke="#00CFFF" stroke-width="1.5"/>
+    <line x1="40" y1="115" x2="20" y2="104" stroke="#00CFFF" stroke-width="1.5"/>
+    <line x1="400" y1="115" x2="420" y2="104" stroke="#00CFFF" stroke-width="1.5"/>
+  </svg>
+
+  <div class="hero-content">
+    <div class="eyebrow">Ryan Tech Hub Presents</div>
+    <h1 class="hero-title">
+      Give Your Child<br>
+      <span class="accent">A Head Start.</span>
+    </h1>
+    <p class="hero-sub">
+      8 weeks of hands-on tech training designed to build real,
+      practical digital skills before Senior Secondary begins —
+      not just another holiday spent idle.
+    </p>
+    <div class="tag-row">
+      <span class="tag">AI Basics</span>
+      <span class="tag">Web Development</span>
+      <span class="tag">Computer Skills</span>
+      <span class="tag">Digital Literacy</span>
+    </div>
+    <a href="#register" class="btn-primary">Secure Your Child's Spot →</a>
+    <div class="hero-meta">
+      <div class="meta-item">
+        <span class="meta-label">Start Date</span>
+        <span class="meta-value">July 13, 2026</span>
+      </div>
+      <div class="meta-item">
+        <span class="meta-label">End Date</span>
+        <span class="meta-value">September 4, 2026</span>
+      </div>
+      <div class="meta-item">
+        <span class="meta-label">Schedule</span>
+        <span class="meta-value">Mon – Fri</span>
+      </div>
+      <div class="meta-item">
+        <span class="meta-label">Investment</span>
+        <span class="meta-value">₦50,000</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ABOUT -->
+<section class="block reveal">
+  <div class="about-grid">
+    <div>
+      <div class="s-eyebrow">About the Programme</div>
+      <h2 class="s-title">What is Ryan Tech Skills Camp?</h2>
+      <p class="s-body">
+        Ryan Tech Skills Camp is an intensive 8-week holiday programme by
+        Ryan Tech Hub — De Programmers Community. Built specifically for
+        JSS3 students, it gives young people real, practical digital skills
+        before Senior Secondary begins.
+        <br><br>
+        This is not a classroom lesson repeated. It is a transformation —
+        designed for the world your child is actually stepping into.
+      </p>
+    </div>
+    <div class="stat-grid">
+      <div class="stat-card">
+        <div class="stat-num">8</div>
+        <div class="stat-lbl">Weeks of intensive training</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num">4</div>
+        <div class="stat-lbl">Core digital skill areas</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num">5×</div>
+        <div class="stat-lbl">Days a week, Mon – Fri</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num">JSS3</div>
+        <div class="stat-lbl">Exclusively for this level</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- SKILLS -->
+<section class="block-alt reveal">
+  <div class="s-eyebrow">Curriculum</div>
+  <h2 class="s-title">What Your Child Will Learn</h2>
+  <p class="s-body">
+    Four skill areas — each chosen because it matters right now, not in theory,
+    not someday. Right now.
+  </p>
+  <div class="skills-grid">
+    <div class="skill-card">
+      <div class="sk-icon">🤖</div>
+      <div class="sk-title">AI Basics</div>
+      <div class="sk-desc">
+        Understanding and using the tools reshaping the world right now.
+        Your child will learn how AI works, how to use it productively,
+        and how to think critically about it — not just consume it.
+      </div>
+    </div>
+    <div class="skill-card">
+      <div class="sk-icon">🌐</div>
+      <div class="sk-title">Web Development</div>
+      <div class="sk-desc">
+        How to build real things on the internet. From writing a first
+        line of code to seeing a webpage come to life — this is where
+        ideas stop being ideas.
+      </div>
+    </div>
+    <div class="skill-card">
+      <div class="sk-icon">💻</div>
+      <div class="sk-title">Computer Skills</div>
+      <div class="sk-desc">
+        The foundation every student needs before Senior Secondary.
+        File management, productivity tools, typing efficiency,
+        and digital workspace organisation.
+      </div>
+    </div>
+    <div class="skill-card">
+      <div class="sk-icon">📱</div>
+      <div class="sk-title">Digital Literacy</div>
+      <div class="sk-desc">
+        How to think, navigate, and operate in a digital world.
+        Online safety, information evaluation, and using technology
+        with purpose rather than just scrolling.
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- DETAILS -->
+<section class="block reveal">
+  <div class="s-eyebrow">Programme Details</div>
+  <h2 class="s-title">Everything You Need to Know</h2>
+  <div class="details-grid">
+    <div class="detail-list">
+      <div class="detail-item">
+        <div class="d-icon">📅</div>
+        <div>
+          <div class="d-label">Dates</div>
+          <div class="d-value">July 13 – September 4, 2026</div>
+        </div>
+      </div>
+      <div class="detail-item">
+        <div class="d-icon">🕐</div>
+        <div>
+          <div class="d-label">Schedule</div>
+          <div class="d-value">Monday – Friday</div>
+          <div class="d-note">Session time to be confirmed</div>
+        </div>
+      </div>
+      <div class="detail-item">
+        <div class="d-icon">📍</div>
+        <div>
+          <div class="d-label">Venue</div>
+          <div class="d-value">Shop 102, CEC Building<br>University of Nigeria, Nsukka</div>
+        </div>
+      </div>
+      <div class="detail-item">
+        <div class="d-icon">👥</div>
+        <div>
+          <div class="d-label">Who Can Apply</div>
+          <div class="d-value">JSS3 Students Only</div>
+        </div>
+      </div>
+    </div>
+    <div class="fee-card">
+      <div class="fee-chip">Programme Investment</div>
+      <div class="fee-amount">₦50,000</div>
+      <div class="fee-sub">Full 8-week programme · All sessions included</div>
+      <a href="#register" class="btn-primary">Register Your Child Now</a>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- WHO IS THIS FOR -->
+<section class="block-alt reveal">
+  <div class="s-eyebrow">Eligibility</div>
+  <h2 class="s-title">Who Is This For?</h2>
+  <div class="who-grid">
+    <p class="s-body">
+      Ryan Tech Skills Camp is designed exclusively for students currently
+      in JSS3. Whether your child has never touched a computer or uses one
+      every day, this programme meets them where they are and builds them
+      into someone who can actually do things with technology.
+      <br><br>
+      The holiday is 8 weeks long. The question is only what they'll do with it.
+    </p>
+    <div class="check-list">
+      <div class="check-item">
+        <div class="chk">✓</div>
+        <div class="chk-text">Currently in JSS3 (as at July 2026)</div>
+      </div>
+      <div class="check-item">
+        <div class="chk">✓</div>
+        <div class="chk-text">No prior coding or tech experience required</div>
+      </div>
+      <div class="check-item">
+        <div class="chk">✓</div>
+        <div class="chk-text">Able to attend Monday – Friday for 8 weeks</div>
+      </div>
+      <div class="check-item">
+        <div class="chk">✓</div>
+        <div class="chk-text">Within reach of UNN Nsukka campus</div>
+      </div>
+      <div class="check-item">
+        <div class="chk">✓</div>
+        <div class="chk-text">Parent or guardian available to complete registration</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- REGISTRATION -->
+<section class="block reveal" id="register">
+  <div class="reg-inner">
+    <div class="s-eyebrow center">Registration</div>
+    <h2 class="s-title center">Secure Your Child's Spot</h2>
+    <p class="s-body center">
+      Fill in both student and parent details below. Registration is
+      confirmed once we receive your form submission.
+    </p>
+    <div class="form-box">
+      <p class="form-note">Click below to open the registration form</p>
+      <a href="#" class="btn-primary">Open Registration Form →</a>
+      <div class="form-divider">or reach us directly</div>
+      <a href="https://wa.me/" class="wa-btn">
+        <span>💬</span> Contact on WhatsApp
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div>
+    <div class="footer-brand">Ryan Tech Hub</div>
+    <div class="footer-sub">De Programmers Community</div>
+    <div class="footer-contact">
+      Shop 102, CEC Building, UNN Nsukka<br>
+      WhatsApp: <a href="https://wa.me/">[Your Number]</a><br>
+      <a href="http://ofaladata.com.ng">ofaladata.com.ng</a>
+    </div>
+  </div>
+  <div class="footer-right">
+    <div class="footer-copy">
+      © 2026 Ryan Tech Hub.<br>
+      All rights reserved.<br>
+      De Programmers Community.
+    </div>
+  </div>
+</footer>
+
+<script>
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.classList.add('visible');
+      observer.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.12 });
+
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
